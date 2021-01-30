@@ -1,10 +1,11 @@
 class Album
-attr_reader :name
+attr_reader :name, :artist
 
   @@albums = []
 
-  def initialize name
+  def initialize (name = "Noname", artist = "Unknown artist")
     @name = name
+    @artist = artist
   end
 
   def self.all
@@ -12,6 +13,7 @@ attr_reader :name
   end
 
   def == other_album
-    @name == other_album.name
+    @name == other_album.name and
+      @artist == other_album.artist
   end
 end
