@@ -14,5 +14,12 @@ describe '.all' do
     expect(Album.new("Black", "Minisinger") == Album.new("Black", "Maxisinger")).to eq(false)
   end
 
+  it 'albums are equal if equal name, artist and year' do
+    expect(Album.new("Black", "Minisinger", 1426) == Album.new("Black", "Minisinger", 1426)).to eq(true)
+  end
+
+  it 'year is always string' do
+    expect(Album.new("Black", "Minisinger", 1426).year.class).to eq(Integer)
+  end
 end
   
