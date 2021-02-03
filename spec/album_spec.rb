@@ -12,6 +12,16 @@ describe '#Album' do
     end
   end
 
+  describe '.find' do
+    it 'finds album by its id' do
+      album = Album.new('Bear')
+      album2 = Album.new('Tyger')
+      album.save
+      album2.save
+      expect(Album.find(album.id)).to eq(album)
+    end
+  end
+
   describe '#==' do
     it 'albums with same names are equal' do
       expect(Album.new("Blue") == Album.new("Blue")).to eq(true)

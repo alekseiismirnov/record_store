@@ -18,8 +18,13 @@ attr_reader :name, :id
     @@total_rows = 0
   end
 
+  def self.find id
+    @@albums[id]
+  end
+
   def save
-    @@albums[self.id] = Album.new(self.name, self.id)
+    id = self.id || @@total_rows += 1
+    @@albums[self.id] = Album.new(self.name, id)
   end
 
   def == other_album
