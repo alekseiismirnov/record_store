@@ -48,5 +48,14 @@ describe '#Album' do
       expect(Album.all).to eq([])
     end
   end
+  
+  describe '.update' do
+    it 'updates album info by id' do
+      # does not update database, but this spec is from the textbook
+      album = Album.new('Duck')
+      album.update('Frog')
+      expect(album.name).to eq('Frog')
+    end
+  end
 end
 

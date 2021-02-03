@@ -30,4 +30,8 @@ attr_reader :name, :id
   def == other_album
     @name == other_album.name 
   end
+
+  def update name
+    @name = name
+  end
 end
