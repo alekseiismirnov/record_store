@@ -2,6 +2,10 @@ require 'rspec'
 require 'album'
 
 describe '#Album' do
+  before(:each) do
+    Album.clear
+  end
+
   describe '.all' do
     it 'is empty at the beginning' do
       expect(Album.all).to eq([])
