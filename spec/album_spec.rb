@@ -49,12 +49,23 @@ describe '#Album' do
     end
   end
   
-  describe '.update' do
+  describe '#update' do
     it 'updates album info by id' do
       # does not update database, but this spec is from the textbook
       album = Album.new('Duck')
       album.update('Frog')
       expect(album.name).to eq('Frog')
+    end
+  end
+
+  describe '#delete' do
+    it 'deletes the album by id' do
+      album = Album.new('Bat')
+      album.save
+      album2 = Album.new('Crow')
+      album2.save
+      album.delete
+      expect(Album.all).to eq([album2])
     end
   end
 end

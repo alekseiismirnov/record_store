@@ -34,4 +34,8 @@ attr_reader :name, :id
   def update name
     @name = name
   end
+
+  def delete 
+    @@albums.delete self.id
+  end
 end
