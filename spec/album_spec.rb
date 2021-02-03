@@ -12,18 +12,6 @@ describe '#Album' do
     it 'albums with same names are equal' do
       expect(Album.new("Blue") == Album.new("Blue")).to eq(true)
     end
-
-    it 'albusm with different artists are not equal' do
-      expect(Album.new("Black", "Minisinger") == Album.new("Black", "Maxisinger")).to eq(false)
-    end
-
-    it 'albums are equal if equal name, artist and year' do
-      expect(Album.new("Black", "Minisinger", 1426) == Album.new("Black", "Minisinger", 1426)).to eq(true)
-    end
-  end
-
-  it 'year is always string' do
-    expect(Album.new("Black", "Minisinger", 1426).year.class).to eq(String)
   end
 
   describe '#save' do
