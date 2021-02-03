@@ -23,5 +23,16 @@ describe '#Album' do
       expect(Album.all).to eq([album, album2])
     end
   end
+
+  describe '.clear' do
+    it 'clears all albums' do
+      album = Album.new('Brown')
+      album2 = Album.new('Red')
+      album.save
+      album2.save
+      Album.clear
+      expect(Album.all).to eq([])
+    end
+  end
 end
 

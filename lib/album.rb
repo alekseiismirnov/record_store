@@ -12,6 +12,11 @@ attr_reader :name, :id
   def self.all
     @@albums.values
   end
+  
+  def self.clear
+    @@albums = {}
+    @@total_rows = 0
+  end
 
   def save
     @@albums[self.id] = Album.new(self.name, self.id)
