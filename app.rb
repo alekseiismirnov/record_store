@@ -26,7 +26,12 @@ get '/albums/:id' do
 end
 
 post '/albums' do 
-  binding.pry
+  name = params[:album_name]
+  album = Album.new(name, nil)
+  album.save
+  
+  @albums = Album.all
+  erb :albums
 end
 
 get '/albums/:id/edit' do
