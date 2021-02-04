@@ -12,7 +12,8 @@ get '/' do
 end
 
 get '/albums' do
-  "List of albums"
+  @albums = Album.all
+  erb :albums
 end
 
 get '/albums/new' do
