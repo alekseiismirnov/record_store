@@ -1,0 +1,14 @@
+<h1> List of albums</h1>
+
+<% if @albums.any? %>
+  <ul>
+    <% @albums.each do |album| %>
+      <li> <%= album.name %> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> Nothing to show yet </p>
+<% end %>
+
+<a href="/albums/new">Add new album</a>
+

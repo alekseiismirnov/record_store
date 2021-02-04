@@ -1,3 +1,5 @@
+require './lib/album.rb'
+
 require 'sinatra'
 require 'sinatra/reloader'
 
@@ -5,7 +7,8 @@ also_reload 'lib/**/*.rb'
 
 
 get '/' do
-  "Home page, root route"
+  @albums = Album.all
+  erb :albums
 end
 
 get '/albums' do
