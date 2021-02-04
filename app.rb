@@ -1,5 +1,6 @@
 require './lib/album.rb'
 
+require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
 
@@ -17,7 +18,7 @@ get '/albums' do
 end
 
 get '/albums/new' do
-  "Page with the form for create a new album"
+  erb :new_album
 end
 
 get '/albums/:id' do
@@ -25,7 +26,7 @@ get '/albums/:id' do
 end
 
 post '/albums' do 
-  "Add album to the collection.  Not accessible by URL typing"
+  binding.pry
 end
 
 get '/albums/:id/edit' do
