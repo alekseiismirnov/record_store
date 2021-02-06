@@ -22,7 +22,8 @@ get '/albums/new' do
 end
 
 get '/albums/:id' do
-  "Page with album info, specified with the id. The value of the id is #{params[:id]}"
+  @album = Album.find(params[:id].to_i)
+  erb :album
 end
 
 post '/albums' do 
