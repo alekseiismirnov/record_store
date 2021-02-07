@@ -36,11 +36,17 @@ post '/albums' do
 end
 
 get '/albums/:id/edit' do
-  "Renders form for the album editing. The value of the id is #{params[:id]}"
+  @album = Album.find(params[:id].to_i)
+
+  erb :edit_album
 end
 
-patch '/album/:id' do
-  "Updates existing album info. Again, not accessible by URL typing"
+patch '/albums/:id' do
+  @album = Album.find(params[:id].to_i)
+  @album.update(params[:name])
+  @albums = Album.all
+
+  erb :albums
 end
 
 delete '/album/:id' do
