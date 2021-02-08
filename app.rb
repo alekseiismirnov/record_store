@@ -44,13 +44,17 @@ end
 patch '/albums/:id' do
   @album = Album.find(params[:id].to_i)
   @album.update(params[:name])
-  @albums = Album.all
 
+  @albums = Album.all
   erb :albums
 end
 
-delete '/album/:id' do
-  "Delete the album"
+delete '/albums/:id' do
+  @album = Album.find(params[:id].to_i)
+  @album.delete
+
+  @albums = Album.all
+  erb :albums
 end
 
 get '/custom_route' do

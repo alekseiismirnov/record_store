@@ -8,4 +8,9 @@
   <button type="submit">Update!</button>
 </form>
 
+<form action="/albums/<%=@album.id%>" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <button type="delete">Delete</button>
+</form>
+
 <a href="/albums/<%=@album.id%>">Back to album</a>
