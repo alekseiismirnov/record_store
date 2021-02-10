@@ -22,6 +22,10 @@ attr_reader :name, :id
     @@albums[id]
   end
 
+  def self.search name
+    Album.all.find {|album| album.name == name}
+  end
+
   def save
     id = self.id || @@total_rows += 1
     @@albums[self.id] = Album.new(self.name, id)

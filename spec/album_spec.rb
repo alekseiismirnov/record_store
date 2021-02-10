@@ -1,4 +1,6 @@
 require 'rspec'
+require 'pry'
+
 require 'album'
 
 describe '#Album' do
@@ -19,6 +21,18 @@ describe '#Album' do
       album.save
       album2.save
       expect(Album.find(album.id)).to eq(album)
+    end
+  end
+
+  describe '.search' do
+    it 'finds album by its name and not find non-existent one' do
+      album = Album.new('Dream')
+      album2 = Album.new('Life')
+      album.save
+      album2.save
+
+      expect(Album.search('Dream')).to eq(album)
+      expect(Album.search('False')).to eq(nil)
     end
   end
 
