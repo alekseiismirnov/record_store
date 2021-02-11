@@ -8,12 +8,12 @@ also_reload 'lib/**/*.rb'
 
 
 get '/' do
-  @albums = Album.all
+  @albums = Album.sort
   erb :albums
 end
 
 get '/albums' do
-  @albums = Album.all
+  @albums = Album.sort
   erb :albums
 end
 
