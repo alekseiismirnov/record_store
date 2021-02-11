@@ -30,7 +30,7 @@ post '/albums' do
   name = params[:album_name]
   album = Album.new(name, nil)
   album.save
-  
+
   @albums = Album.all
   erb :albums
 end
@@ -57,6 +57,11 @@ delete '/albums/:id' do
   erb :albums
 end
 
-get '/custom_route' do
-  "Whatever, if we really need it"
+post '/search' do
+  @album = Album.search params[:album_name]
+  if @album 
+    erb :album 
+  else
+    erb :nothing_found
+  end
 end

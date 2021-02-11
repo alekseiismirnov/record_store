@@ -36,6 +36,15 @@ describe '#Album' do
     end
   end
 
+  describe '.sort' do
+    it 'returns the list of all albums, sorted by name' do
+      names = (1..5).to_a.map(&:to_s)
+      names.shuffle.each { |name| Album.new(name).save }
+
+      expect(Album.sort.map(&:name)).to eq(names)
+    end
+  end
+      
   describe '#==' do
     it 'albums with same names are equal' do
       expect(Album.new("Blue") == Album.new("Blue")).to eq(true)
