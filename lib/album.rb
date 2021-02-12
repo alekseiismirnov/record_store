@@ -2,6 +2,7 @@ class Album
 attr_reader :name, :id
 
   @@albums = {} 
+  @@albums_sold = {}
   @@total_rows = 0
 
   def initialize(name = "Noname", id = nil)
@@ -30,6 +31,10 @@ attr_reader :name, :id
     Album.all.sort { |album, album2| album.name <=> album2.name }
   end
 
+  def self.all_sold
+    @@albums_sold.values
+  end
+
   def save
     id = self.id || @@total_rows += 1
     @@albums[self.id] = Album.new(self.name, id)
@@ -45,5 +50,10 @@ attr_reader :name, :id
 
   def delete 
     @@albums.delete self.id
+  end
+
+  def sold
+    @@albums.delete self.id
+    @@albums_sold[self.id] = self
   end
 end

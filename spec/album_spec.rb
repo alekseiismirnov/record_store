@@ -44,7 +44,7 @@ describe '#Album' do
       expect(Album.sort.map(&:name)).to eq(names)
     end
   end
-      
+
   describe '#==' do
     it 'albums with same names are equal' do
       expect(Album.new("Blue") == Album.new("Blue")).to eq(true)
@@ -71,7 +71,7 @@ describe '#Album' do
       expect(Album.all).to eq([])
     end
   end
-  
+
   describe '#update' do
     it 'updates album info by id' do
       # does not update database, but this spec is from the textbook
@@ -89,6 +89,26 @@ describe '#Album' do
       album2.save
       album.delete
       expect(Album.all).to eq([album2])
+    end
+  end
+
+  describe '#sold' do
+    it 'removes album from the list' do
+      (1..5).to_a.map(&:to_s).each do |name|
+        Album.new(name).save
+      end
+      album = Album.search '3'
+      album.sold
+      expect(Album.all.none?(album)).to be(true)
+    end
+
+    it 'sold albums appears in list of sold ones' do
+      (1..5).to_a.map(&:to_s).each do |name|
+        Album.new(name).save
+      end
+      album = Album.search '3'
+      album.sold
+      expect(Album.all_sold.any?(album)).to be(true)
     end
   end
 end
