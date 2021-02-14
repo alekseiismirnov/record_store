@@ -13,7 +13,7 @@
     <% end %>
   </ul>
 <% else %>
-  <p> Nothing to show yet </p>
+  <p>All sold</p>
 <% end %>
 
 <a href="/albums/new">Add new album</a>
@@ -25,13 +25,11 @@
   <ul>
     <% @albums_sold.each do |album| %>
       <li>
-        <a href="/albums/<%=album.id%>">
           <%= album.name %>
-        </a>
       </li>
     <% end %>
   </ul>
 <% else %>
-  <p> Nothing to show yet </p>
+  <p>Nothing to show yet</p>
 <% end %>
 

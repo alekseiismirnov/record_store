@@ -32,7 +32,9 @@ post '/albums/:id/sell' do
   @album = Album.find(params[:id].to_i)
   @album.sold
 
-  erb :album  
+  @albums = Album.all
+  @albums_sold = Album.all_sold
+  erb :albums
 end
 
 post '/albums' do 
