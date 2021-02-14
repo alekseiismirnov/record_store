@@ -9,11 +9,13 @@ also_reload 'lib/**/*.rb'
 
 get '/' do
   @albums = Album.sort
+  @albums_sold = Album.all_sold
   erb :albums
 end
 
 get '/albums' do
   @albums = Album.sort
+  @albums_sold = Album.all_sold
   erb :albums
 end
 
@@ -26,11 +28,19 @@ get '/albums/:id' do
   erb :album
 end
 
+post '/albums/:id/sell' do
+  @album = Album.find(params[:id].to_i)
+  @album.sold
+
+  erb :album  
+end
+
 post '/albums' do 
   name = params[:album_name]
   album = Album.new(name, nil)
   album.save
 
+  @albums_sold = Album.all_sold
   @albums = Album.all
   erb :albums
 end

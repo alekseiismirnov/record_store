@@ -1,4 +1,7 @@
 <h4> Album name: <%=@album.name%></h4>
+<form action="/albums/<%=params[:id]%>/sell" method="post">
+  <button type="submit" class="btn">Sell</button>
+</form>
 
 <p>
   <a href="/albums/<%=@album.id%>/edit"%>Modify album information</a>

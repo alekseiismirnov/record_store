@@ -1,4 +1,6 @@
-<h1> List of albums</h1>
+<h1> Albums </h1>
+
+<h2> Albums to sell </h2>
 
 <% if @albums.any? %>
   <ul>
@@ -15,4 +17,21 @@
 <% end %>
 
 <a href="/albums/new">Add new album</a>
+
+
+<h2> Sold Albums</h2>
+
+<% if @albums_sold.any? %>
+  <ul>
+    <% @albums_sold.each do |album| %>
+      <li>
+        <a href="/albums/<%=album.id%>">
+          <%= album.name %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p> Nothing to show yet </p>
+<% end %>
 
