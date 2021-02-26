@@ -20,6 +20,10 @@ class Song
     @@songs.values
   end
 
+  def self.find id
+    @@songs[id]
+  end
+
   def == another
     self.name == another.name and self.album_id == another.album_id
   end

@@ -53,4 +53,14 @@ describe '#Song' do
       expect(Song.all).to(eq([song]))
     end
   end
+
+    describe('.find') do
+    it("finds a song by id") do
+      song = Song.new("Giant Steps", @album.id, nil)
+      song.save()
+      song2 = Song.new("Naima", @album.id, nil)
+      song2.save()
+      expect(Song.find(song.id)).to(eq(song))
+    end
+  end
 end
