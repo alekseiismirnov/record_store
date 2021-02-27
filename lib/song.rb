@@ -24,6 +24,10 @@ class Song
     @@songs[id]
   end
 
+  def self.find_by_album album_id
+    @@songs.values.select {|song| song.album_id == album_id}
+  end
+
   def == another
     self.name == another.name and self.album_id == another.album_id
   end
