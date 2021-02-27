@@ -73,4 +73,14 @@ describe '#Song' do
     end
   end
 
+  describe('#delete') do
+    it("deletes an song by id") do
+      song = Song.new("Giant Steps", @album.id, nil)
+      song.save()
+      song2 = Song.new("Naima", @album.id, nil)
+      song2.save()
+      song.delete()
+      expect(Song.all).to(eq([song2]))
+    end
+  end
 end

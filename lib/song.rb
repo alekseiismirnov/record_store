@@ -36,4 +36,8 @@ class Song
     @name = name
     @album_id = album_id
   end
+
+  def delete
+    @@songs.delete self.id
+  end
 end
