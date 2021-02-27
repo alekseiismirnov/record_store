@@ -45,4 +45,8 @@ class Song
   def delete
     @@songs.delete self.id
   end
+
+  def album
+    Album.find self.album_id
+  end
 end
