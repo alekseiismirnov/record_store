@@ -29,12 +29,13 @@ class Song
   end
 
   def save
-    @@songs[self.id] = self
+    @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
   end
 
   def update(name, album_id)
     @name = name
     @album_id = album_id
+    self.save
   end
 
   def delete
