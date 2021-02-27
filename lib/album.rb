@@ -56,4 +56,8 @@ attr_reader :name, :id
     @@albums.delete self.id
     @@albums_sold[self.id] = self
   end
+
+  def songs
+    Song.find_by_album self.id
+  end
 end
