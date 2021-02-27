@@ -1,4 +1,4 @@
-require 'album'
+require './lib/album.rb'
 
 class Song
   attr_reader :name, :album_id, :id

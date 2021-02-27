@@ -26,6 +26,8 @@ end
 
 get '/albums/:id' do
   @album = Album.find(params[:id].to_i)
+  @songs = @album.songs
+
   erb :album
 end
 
@@ -80,14 +82,15 @@ post '/search' do
 end
 
 get '/albums/:id/songs/:song_id' do
-  @song = Songs.find params[:song_id].to_i
+  @song = Song.find params[:song_id].to_i
 
-  erb :song
+  erb :songs
 end
 
-post '/albums/:id/songs/' do
+post '/albums/:id/songs' do
   Song.new(params[:song_name], params[:id].to_i, nil).save
   @album = Album.find params[:id].to_i
+  @songs = @album.songs
 
   erb :album
 end
