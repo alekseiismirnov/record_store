@@ -27,10 +27,13 @@ class Song
   def == another
     self.name == another.name and self.album_id == another.album_id
   end
-   
- def save
-  @@songs[self.id] = self
- end
 
-   
+  def save
+    @@songs[self.id] = self
+  end
+
+  def update(name, album_id)
+    @name = name
+    @album_id = album_id
+  end
 end

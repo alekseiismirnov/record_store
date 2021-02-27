@@ -63,4 +63,14 @@ describe '#Song' do
       expect(Song.find(song.id)).to(eq(song))
     end
   end
+
+  describe('#update') do
+    it("updates an song by id") do
+      song = Song.new("Naima", @album.id, nil)
+      song.save()
+      song.update("Mr. P.C.", @album.id)
+      expect(song.name).to(eq("Mr. P.C."))
+    end
+  end
+
 end
