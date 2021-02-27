@@ -54,7 +54,7 @@ describe '#Song' do
     end
   end
 
-    describe('.find') do
+  describe('.find') do
     it("finds a song by id") do
       song = Song.new("Giant Steps", @album.id, nil)
       song.save()
@@ -84,7 +84,7 @@ describe '#Song' do
     end
   end
 
-    describe('.find_by_album') do
+  describe('.find_by_album') do
     it("finds songs for an album") do
       album2 = Album.new("Blue", nil)
       album2.save
