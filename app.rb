@@ -1,8 +1,9 @@
-require './lib/album.rb'
-
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
+
+require './lib/album.rb'
+require './lib/song.rb'
 
 also_reload 'lib/**/*.rb'
 
@@ -76,4 +77,35 @@ post '/search' do
   else
     erb :nothing_found
   end
+end
+
+get '/albums/:id/songs/:song_id' do
+  @song = Songs.find params[:song_id].to_i
+
+  erb :song
+end
+
+post '/albums/:id/songs/' do
+  Song.new(params[:song_name], params[:id].to_i, nil).save
+  @album = Album.find params[:id].to_i
+
+  erb :album
+end
+
+patch '/albums/:id/songs/:song_id' do
+  @song = Song.find params[:song_id].to_i
+  @song.update(params[:song_name], params[:id].to_i)
+
+  @album = Album.find params[:id]
+
+  erb :album
+end
+
+patch '/albums/:id/songs/:song_id' do
+  song = Song.find params[:song_id]
+  song.delete
+
+  @album = Album.find params[:id].to_i
+
+  erb :album
 end
