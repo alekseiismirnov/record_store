@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader'
@@ -6,7 +8,6 @@ require './lib/album.rb'
 require './lib/song.rb'
 
 also_reload 'lib/**/*.rb'
-
 
 get '/' do
   @albums = Album.sort
@@ -40,7 +41,7 @@ post '/albums/:id/sell' do
   erb :albums
 end
 
-post '/albums' do 
+post '/albums' do
   name = params[:album_name]
   album = Album.new(name, nil)
   album.save
@@ -74,8 +75,8 @@ end
 
 post '/search' do
   @album = Album.search params[:album_name]
-  if @album 
-    erb :album 
+  if @album
+    erb :album
   else
     erb :nothing_found
   end
@@ -106,11 +107,11 @@ patch '/albums/:id/songs/:song_id' do
   erb :album
 end
 
-patch '/albums/:id/songs/:song_id' do
-  song = Song.find params[:song_id]
+delete '/albums/:id/songs/:song_id' do
+  song = Song.find params[:song_id].to_i
   song.delete
 
   @album = Album.find params[:id].to_i
-
+  @songs = @album.songs
   erb :album
 end

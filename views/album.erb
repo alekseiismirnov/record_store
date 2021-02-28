@@ -1,27 +1,24 @@
 <h4> Album name: <%=@album.name%></h4>
-
 <% if @songs %>
-       <ul>
-       <% @songs.each do |song| %>
-         <li>
-         <a href="/albums/<%=@album.id%>/songs/<%=song.id%>"><%= song.name %></a>
-         </li>
-         </ul>
-       <% end %>
-     <% else %>
-       <p>No songs yet.</p>
-     <% end %>
-
-     <form action="/albums/<%= @album.id %>/songs" method="post">
-     <label for="name">Song name:</label>
-     <input id="name" name="song_name" type="text">
-     <button type="submit" class="btn">Add</button>
-     </form>
-     <form action="/albums/<%=params[:id]%>/sell" method="post">
-     <button type="submit" class="btn">Sell</button>
-     </form>
-
-     <p>
-     <a href="/albums/<%=@album.id%>/edit"%>Modify album information</a>
-     </p>
-     <a href="/albums">Back to albums list</a>
+  <ul>
+    <% @songs.each do |song| %>
+      <li>
+        <a href="/albums/<%=@album.id%>/songs/<%=song.id%>"><%= song.name %></a>
+      </li>
+    </ul>
+  <% end %>
+<% else %>
+  <p>No songs yet.</p>
+<% end %>
+<form action="/albums/<%= @album.id %>/songs" method="post">
+  <label for="name">Song name:</label>
+  <input id="name" name="song_name" type="text">
+  <button type="submit" class="btn">Add</button>
+</form>
+<form action="/albums/<%=params[:id]%>/sell" method="post">
+  <button type="submit" class="btn">Sell</button>
+</form>
+<p>
+  <a href="/albums/<%=@album.id%>/edit"%>Modify album information</a>
+</p>
+<a href="/albums">Back to albums list</a>
