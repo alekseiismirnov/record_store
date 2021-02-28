@@ -82,6 +82,7 @@ post '/search' do
 end
 
 get '/albums/:id/songs/:song_id' do
+  @album = Album.find params[:id].to_i
   @song = Song.find params[:song_id].to_i
 
   erb :songs
@@ -99,7 +100,8 @@ patch '/albums/:id/songs/:song_id' do
   @song = Song.find params[:song_id].to_i
   @song.update(params[:song_name], params[:id].to_i)
 
-  @album = Album.find params[:id]
+  @album = Album.find params[:id].to_i
+  @songs = @album.songs
 
   erb :album
 end
