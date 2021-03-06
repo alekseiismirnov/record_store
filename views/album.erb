@@ -11,8 +11,8 @@
   <p>No songs yet.</p>
 <% end %>
 <form action="/albums/<%= @album.id %>/songs" method="post">
-  <label for="name">Song name:</label>
-  <input id="name" name="song_name" type="text">
+  <label for="song_name">Song name:</label>
+  <input id="song_name" name="song_name" type="text">
   <button type="submit" class="btn">Add</button>
 </form>
 <form action="/albums/<%=params[:id]%>/sell" method="post">

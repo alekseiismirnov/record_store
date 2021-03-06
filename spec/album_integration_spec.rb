@@ -14,3 +14,14 @@ describe('create an album path', type: :feature) do
     expect(page).to have_content('Yellow Submarine')
   end
 end
+
+describe('create a song path', type: :feature) do
+  it('creates an album and goes to the album page') do
+    album = Album.new('Yellow dwarf')
+    album.save
+    visit("/albums/#{album.id}")
+    fill_in('song_name', with: 'Too small')
+    click_on('Add')
+    expect(page).to have_content('Too small')
+  end
+end
