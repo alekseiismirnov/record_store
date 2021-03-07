@@ -46,8 +46,8 @@ post '/albums' do
   album = Album.new(name, nil)
   album.save
 
-  @albums_sold = Album.all_sold
   @albums = Album.all
+  @albums_sold = Album.all_sold
   erb :albums
 end
 
@@ -62,6 +62,7 @@ patch '/albums/:id' do
   @album.update(params[:name])
 
   @albums = Album.all
+  @albums_sold = Album.all_sold
   erb :albums
 end
 
@@ -70,6 +71,7 @@ delete '/albums/:id' do
   @album.delete
 
   @albums = Album.all
+  @albums_sold = Album.all_sold
   erb :albums
 end
 
