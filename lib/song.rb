@@ -20,16 +20,16 @@ class Song
     @@songs.values
   end
 
-  def self.find id
+  def self.find(id)
     @@songs[id]
   end
 
-  def self.find_by_album album_id
-    @@songs.values.select {|song| song.album_id == album_id}
+  def self.find_by_album(album_id)
+    @@songs.values.select { |song| song.album_id == album_id}
   end
 
   def ==(other)
-    name == other.name && album_id == other.album_id
+    @name == other.name && @album_id == other.album_id
   end
 
   def save
@@ -47,10 +47,10 @@ class Song
   end
 
   def album
-    Album.find album_id
+    Album.find @album_id
   end
 
-  def add_lyrics(new_lyrics)
-    @lyrics = new_lyrics
+  def add_lyrics(lyrics)
+    @lyrics = lyrics
   end
 end
