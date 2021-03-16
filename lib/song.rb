@@ -1,7 +1,7 @@
 require './lib/album.rb'
 
 class Song
-  attr_reader :name, :album_id, :id
+  attr_reader :name, :album_id, :id, :lyrics
 
   @@songs = {}
   @@total = 0
@@ -28,25 +28,29 @@ class Song
     @@songs.values.select {|song| song.album_id == album_id}
   end
 
-  def == another
-    self.name == another.name and self.album_id == another.album_id
+  def ==(other)
+    name == other.name && album_id == other.album_id
   end
 
   def save
-    @@songs[self.id] = Song.new(self.name, self.album_id, self.id)
+    @@songs[id] = Song.new(name, album_id, id)
   end
 
   def update(name, album_id)
     @name = name
     @album_id = album_id
-    self.save
+    save
   end
 
   def delete
-    @@songs.delete self.id
+    @@songs.delete id
   end
 
   def album
-    Album.find self.album_id
+    Album.find album_id
+  end
+
+  def add_lyrics(new_lyrics)
+    @lyrics = new_lyrics
   end
 end

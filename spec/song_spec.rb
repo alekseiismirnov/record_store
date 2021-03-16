@@ -103,4 +103,27 @@ describe '#Song' do
       expect(song.album()).to(eq(@album))
     end
   end
+
+  describe('#lyrics') do
+    it 'is, actually' do
+      song = Song.new("Naima", @album.id, nil)
+      expect(song.respond_to?(:lyrics)).to eq(true)
+    end
+  end
+
+  describe('#lyrics') do
+    it 'is nil on initial' do
+      song = Song.new("Naima", @album.id, nil)
+      expect(song.lyrics).to eq(nil)  
+    end
+  end
+
+  describe('#add_lyrics') do
+    it 'adds some lyrics to the song' do
+      lyrics = "Souvent, je mens \nPour aussi papillonner"
+      song = Song.new("Naima", @album.id, nil)
+      song.add_lyrics(lyrics)
+      expect(song.add_lyrics(lyrics)).to eq(lyrics)
+    end
+  end
 end
