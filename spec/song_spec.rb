@@ -125,5 +125,13 @@ describe '#Song' do
       song.add_lyrics(lyrics)
       expect(song.add_lyrics(lyrics)).to eq(lyrics)
     end
+    it 'adds some lyrics to the song' do
+      lyrics = 'Souvent, je mens \nPour aussi papillonner'
+      song = Song.new('Naima', @album.id, nil)
+      song.add_lyrics(lyrics)
+      song.save
+      same_song = Song.find(song.id)
+      expect(same_song.lyrics).to eq(lyrics)
+    end
   end
 end

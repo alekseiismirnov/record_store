@@ -33,7 +33,8 @@ class Song
   end
 
   def save
-    @@songs[id] = Song.new(name, album_id, id)
+    @@songs[id] = Song.new(@name, @album_id, @id)
+    @@songs[id].add_lyrics @lyrics
   end
 
   def update(name, album_id)
